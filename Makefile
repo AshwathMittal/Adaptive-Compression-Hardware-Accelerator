@@ -16,7 +16,7 @@ export PATH := /home/shay/a/ece270/bin:$(PATH)
 export LD_LIBRARY_PATH := /home/shay/a/ece270/lib:$(LD_LIBRARY_PATH)
 
 # current project (for development)
-PROJECT = stoplight_example
+PROJECT = HardwareAccelerator
 
 # "in-shell" (NanoHub) or "out-of-shell" otherwise
 NIX_MODE := out-of-shell
