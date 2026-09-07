@@ -1,4 +1,4 @@
-# OpenLane Guide for SoCET Intro II Students
+# OpenLane Guide
 
 This repository your starting point to learn how to use OpenLane for SoCET Intro II. The structure and contents of this repository facilitate the use of OpenLane 2 to harden a design. An overview of OpenLane, instructions on how to harden a design, and important Makefile targets are covered in this guide.
 
