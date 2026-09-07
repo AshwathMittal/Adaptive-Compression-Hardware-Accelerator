@@ -1,6 +1,6 @@
 # OpenLane Guide
 
-This repository your starting point to learn how to use OpenLane for SoCET Intro II. The structure and contents of this repository facilitate the use of OpenLane 2 to harden a design. An overview of OpenLane, instructions on how to harden a design, and important Makefile targets are covered in this guide.
+This repository your starting point to learn how to use OpenLane. The structure and contents of this repository facilitate the use of OpenLane 2 to harden a design. An overview of OpenLane, instructions on how to harden a design, and important Makefile targets are covered in this guide.
 
 ## OpenLane Overview
 OpenLane is a powerful and versatile library that enables the implementation of digital ASIC designs using open-source and commercial EDA tools. OpenLane abstracts how each tool works by allowing the user to configure them. Once you’ve installed OpenLane, running a digital design through the flow requires the following:
@@ -10,36 +10,6 @@ OpenLane is a powerful and versatile library that enables the implementation of 
 - A process design kit (PDK) – For us, SkyWater's open-source [Sky130A](https://www.skywatertechnology.com/sky130-open-source-pdk/) PDK
 
 The `config.json` file provides all the variables to set the flow; if it doesn’t specify a value for a certain variable, the flow will use default values. The default PDK is the **SkyWater/Google 130nm** PDK, but any other PDKs can be specified in the `config.json`. The sky130 PDK automatically downloads when you run the flow for the first time. In the configuration file you can specify the HDL code of your design (in Verilog/SystemVerilog), the clock port, and the desired clock period. More information on OpenLane for beginners can be found [here](https://openlane2.readthedocs.io/en/latest/getting_started/newcomers/index.html).
-
-## Instructions to Create Your Repository
-1. Towards the top right of this repo's main page, click on the green "Use this template" button.
-
-3. From there, click "Create anew repository"
-   
-5. Under your repository name, format it as ```{intro2_<season><year>_team<team_number>_tt}```. For example, for Spring 2026 team 1, the name should be ```intro2_S2026_team01_tt```
-   
-7. Under the description, add a description of your project in 1-2 sentences.
-   
-9. Leave everything else as default and click "Create repository"
-
-## Instructions for Cloning to nanoHUB
-1. Log into [nanoHUB](https://nanohub.org/) and find your "dashboard" page.
-   
-3. Under the "MY TOOLS" section, click on "All Tools" and search for "OpenLane 2".
-   
-5. Once you've clicked on the tool, you should see a "launch tool button". Click on it and wait for the tool to launch (it *can* take several minutes, so be patient)
-   
-7. If the tool loaded correctly, you should be able to see three windows - one called toolsession-XXXX, an Import/Export window, and an OpenLane window. Click on the toolsession window.
-   
-9. To clone anything from GitHub, you must first generate an SSH key and pair it to your account. To do this, type `ssh-keygen -t rsa -b 4096 -C "<your GitHub email here>"` into the terminal. Your public key can now be found in `~/.ssh/id_rsa.pub`.
-    
-11. To copy your public key (ctrl+C/V doesn't work on nanoHUB!), go to the Import/Export window, select Download, and in the file name, type `~/.ssh/id_rsa.pub`. Select "Open". On the window that pops up, select the text that appears and copy it with Ctrl+C.
-    
-13. In your GitHub account settings (click on your profile photo then settings), under the Access section, click "SSH and GPG keys". Click New SSH key and paste your key under the "Key" section. Title your key something descriptive like "SoCET nanoHUB key". Once you click "Add SSH Key", you should be able to clone any GitHub repo into nanoHUB. To clone this repo, click on the green "<> Code" button and coppy the SSH key.
-    
-15. To paste this into nanohub, first type `cd ~/` then `importfile paste.txt` into your toolsession terminal. Once the window pops up, select "Copy/paste text" and paste the SSH repo address in the text box. Click upload. Then, type `git clone $(cat paste.txt)` to clone this repo.
-    
-17. As a final note, whenever running makefile commands in nanoHUB, you must use the "OpenLane" window. Because nanoHub runs tools in a shell, you must modify line 16 of the `Makefile` to `NIX_MODE := in-shell` when running your design through the flow on nanoHUB.
 
 ## Instructions for Setting Up Tools Locally
 The best package to install and use is [OSS Cad Suite](https://github.com/YosysHQ/oss-cad-suite-build/releases). These steps will walk through how to install and set up.
@@ -107,7 +77,7 @@ We'll use a tool called USBIPD to forward USB devices to WSL. Follow [this guide
 ## Reading Log Files (debugging, area, critical path, etc)
 If your design failes to make it through the entire OpenLane flow, the only (and best) way to debug what may have went wrong is to look at your log files. These can always be found under `openlane/<design name>/runs/YY_MM_DD_TIME`. Your latest run should always appear at the bottom, but to double check, make sure the time and date ligns up with what you expectet. Inside this directory is a separate directory for every one of the ~75 flow stages - each with log files, reports, or other files. Whichever step the flow failed at corresponds to the last stage that you see in that particular run directory.
 
-Once your design has been hardened, reading and understanding the run's log files is one of the most important aspects to characterizing your design's performance. The two key characteristics Intro II will focus on in this flow are 1) your area, and 2) your timing. These two metrics are a direct indicator if your design will fail. 
+Once your design has been hardened, reading and understanding the run's log files is one of the most important aspects to characterizing your design's performance.
 
 1. To find area, look near step 30 for a stage named `openroad-detailedplacement`. In a nutshell, this stage is where all parts of your design will be placed exactly on the die before routing, and at this point, OpenLane knows exactly how much area will be dedicated to each kind of cell and your design overall. Look for a table in the `openroad-detailedplacement.log` titled "Cell type report". Each cell type will have a count and an area in um^2, and your total area and cell count will be visible at the bottom.
    
