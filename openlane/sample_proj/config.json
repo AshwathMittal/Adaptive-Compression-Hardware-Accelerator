@@ -1,0 +1,24 @@
+{
+    "//": "Basics",
+    "DESIGN_NAME": "sample_proj",
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/sample_proj/sample_proj.sv",
+        "dir::../../verilog/rtl/sample_proj/decoder_for_out.sv",
+        "dir::../../verilog/rtl/sample_proj/flex_counter.sv"
+    ],
+    "CLOCK_PERIOD": 25,
+    "CLOCK_PORT": "clk",
+
+    "//": "Core Utilization Percentage",
+    "FP_CORE_UTIL": 40,
+
+    "//": "Limits layers to use",
+    "FP_PDN_MULTILAYER": false,
+
+    "//": "Relax transition constraint",
+    "MAX_TRANSITION_CONSTRAINT": 1,
+
+    "//": "Power pins",
+    "VDD_NETS": "VPWR",
+    "GND_NETS": "VGND"
+}

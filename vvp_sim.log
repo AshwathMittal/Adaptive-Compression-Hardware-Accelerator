@@ -1,0 +1,5 @@
+VCD info: dumpfile support/waves/stoplight_example/top.vcd opened for output.
+VCD warning: $dumpvars: Unsupported argument type (vpiPackage)
+
+Test cases passed: x/x
+

@@ -1,0 +1,42 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Mon Jan 19 22:36:52 2026
+[*]
+[dumpfile] "/home/aweyer26/socet/intro2_openlane_flow_template/support/waves/sample_proj/flex_counter.vcd"
+[dumpfile_mtime] "Mon Jan 19 22:36:11 2026"
+[dumpfile_size] 3877
+[savefile] "/home/aweyer26/socet/intro2_openlane_flow_template/support/waves/sample_proj/sample_proj.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-17.831221 1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] flex_counter_tb.
+[sst_width] 276
+[signals_width] 190
+[sst_expanded] 1
+[sst_vpaned_height] 157
+@420
+flex_counter_tb.CLK_PERIOD
+@28
+flex_counter_tb.INACTIVE_VALUE
+@420
+flex_counter_tb.NUM_BITS
+@28
+flex_counter_tb.RESET_OUTPUT_VALUE
+flex_counter_tb.tb_clear
+flex_counter_tb.tb_clk
+flex_counter_tb.tb_count_enable
+@22
+flex_counter_tb.tb_count_out[3:0]
+@28
+flex_counter_tb.tb_nrst
+@420
+flex_counter_tb.tb_passed
+@28
+flex_counter_tb.tb_rollover_flag
+@22
+flex_counter_tb.tb_rollover_val[3:0]
+@420
+flex_counter_tb.tb_test_num
+[pattern_trace] 1
+[pattern_trace] 0

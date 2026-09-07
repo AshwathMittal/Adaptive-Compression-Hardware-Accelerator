@@ -1,0 +1,49 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# SoCET Intro II Makefile - Alex Weyer, Miguel Isrrael Teran  #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+Hardening targets:
+
+| FUNCTION                   | USE CASE                    | EXPLANATION                                       |
+| -------------------------- | --------------------------- | --------------------------------------------------|
+| `list designs`             | list all existing designs   | Lists all designs that can be hardened.           |
+| `make <design>`            | harden a design             | Generates your design’s GDSII using OpenLane.     |
+| `gdsview_<design>_klayout` | view your GDSII             | Opens your design’s GDSII in KLayout for viewing. |
+| `clean_openlane`           | clean up old OpenLane runs  | Removes OpenLane temporary files and logs.        |
+
+Notes:
+<design> is the name of your project, like "matrix multiplier", or "simple CPU"
+FPGA targets:
+
+| FUNCTION                   | USE CASE                    | EXPLANATION                                                                                  |
+| -------------------------- | --------------------------- | -------------------------------------------------------------------------------------------- |
+| `make cram`                | quick FPGA testing          | Programs the FPGA’s volatile configuration RAM. Configuration is lost when power is removed. |
+| `make flash`               | permanent FPGA programming  | Programs the FPGA board’s non-volatile flash. Configuration persists across power cycles.    |
+| `make fpga-cells`          | technology-mapped schematic | Displays a schematic of ice40-specific LUTs and flip-flops used in the design.               |
+| `make fpga_time`           | timing verification         | Compiles, synthesizes, and checks timing of the FPGA top-level design.                       |
+
+Development targets:
+
+| FUNCTION                   | USE CASE                    | EXPLANATION                                                                                  |
+| -------------------------- | --------------------------- | -------------------------------------------------------------------------------------------- |
+| `make setup_<design>`      | setup a new design          | Configures all required files and directories for a new design.            |
+| `make setup.pdk`           | to allow cell-level synth   | Installs OpenLane's "Volare" PDK for Sky130A                               |
+| `make vlint_<name>`        | static code checking        | Compiles source code only to check for syntax and basic errors.            |
+| `make sim_<name>_src`      | behavioral verification     | Compiles (without synthesis) and runs your testbench.                      |
+| `make sim_<name>_syn`      | cell-level verification     | Synthesizes your design and runs the testbench on the synthesized netlist. |
+| `make cells`               | schematic display           | Displays a schematic of the modules and gates in the top-level design.     |
+| `make cells_<mod>`         | module schematic display    | Displays a schematic of the logic gates and flip-flops for module `<mod>`. |
+| `make clean`               | remove temporary files      | Removes logs and temporary files (normally not required).                  |
+
+Notes:
+replace <name> or <mod> with the module name
+Required naming convention (if the module's name is "example"):
+    1) Source module: example.sv (in verilog/rtl/<project>)
+    2) Testbench: example_tb.sv (in verilog/dv/<project>)
+    3) Dump file: example.vcd (declared in testbench file)
+
+Example usage:
+To check syntax only, "make vlint_example"
+To run behavioral simulation "make sim_test_src"
+
+Make the terminal wider if the tables are hard to read!
