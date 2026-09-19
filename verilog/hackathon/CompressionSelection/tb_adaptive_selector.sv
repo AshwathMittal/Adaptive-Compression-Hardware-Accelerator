@@ -20,7 +20,7 @@ module tb_adaptive_selector;
     logic [1:0] format_select;
     logic [COST_W-1:0] selected_cost;
 
-    // Instantiate Member 2's complete decision block.
+    
     adaptive_selector #(
         .DATA_W(DATA_W),
         .TILE_ELEMS(TILE_ELEMS),
@@ -30,7 +30,7 @@ module tb_adaptive_selector;
         .*
     );
 
-    // Also instantiate Member 1's encoders directly so this testbench can
+    // Also instantiate encoders directly so this testbench can
     // prove that our predicted costs match their actual len_out values.
     logic [MAX_OUT_BITS-1:0] raw_data_unused;
     logic [MAX_OUT_BITS-1:0] bitmap_data_unused;

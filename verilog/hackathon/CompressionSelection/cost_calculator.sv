@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-// Predicts the exact encoded bit lengths produced by the current Member 1 encoders.
+// Predicts the exact encoded bit lengths produced by the current encoders.
 //
 // RAW:    2-bit tag + every input value
 // Bitmap: 2-bit tag + one bitmap bit per element + each non-zero value
@@ -23,7 +23,7 @@ module cost_calculator #(
 
     always_comb begin
         // These formulas intentionally include the format tags because
-        // Member 1's len_out signals also include them.
+        // len_out signals also include them.
         raw_cost    = TAG_W + (TILE_ELEMS * DATA_W);
         bitmap_cost = TAG_W + TILE_ELEMS + (nonzero_count * DATA_W);
         rle_cost    = TAG_W + RLE_HEADER_W

@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-// Complete Hardware Member 2 block.
+// Complete Hardware block.
 // Input:  one uncompressed tile
 // Output: tile statistics, predicted costs, and the chosen compression format
 module adaptive_selector #(
