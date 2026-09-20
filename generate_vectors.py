@@ -80,9 +80,10 @@ def main() -> None:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path(__file__).resolve().parents[1]
+        default=Path(__file__).resolve().parent
         / "verilog"
-        / "hackathon"
+        / "rtl"
+        / "HardwareAccelerator"
         / "generated_vectors",
     )
     args = parser.parse_args()
