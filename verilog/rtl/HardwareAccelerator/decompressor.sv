@@ -66,6 +66,8 @@ module decompressor #(
 
 			FORMAT_RLE: begin
 				token_count = data_in[5:2];
+				if ((token_count == 0) && (len_in > 6))
+					token_count = 16;
 				required_bits = 6 + (token_count * (DATA_W + 4));
 				if ((token_count <= TILE_ELEMS) &&
 					(len_in >= required_bits) &&
@@ -88,7 +90,7 @@ module decompressor #(
 				end
 			end
 
-			default: begin
+ 			default: begin
 				valid = 1'b0;
 			end
 		endcase
