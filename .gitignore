@@ -1,2 +1,3 @@
 openlane/*/runs
 pdks
+__pycache__
