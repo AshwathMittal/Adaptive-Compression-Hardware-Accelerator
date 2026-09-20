@@ -165,6 +165,25 @@ debug-nix:
 #             Development targets
 # ================================================
 
+# Human-readable RTL demonstration for recording a compression walkthrough.
+.PHONY: demo
+demo:
+	iverilog -g2012 -s tb_compression_demo -o /tmp/adaptive_compression_demo \
+		tb_compression_demo.sv \
+		verilog/rtl/HardwareAccelerator/raw_encoder.sv \
+		verilog/rtl/HardwareAccelerator/bitmap_encoder.sv \
+		verilog/rtl/HardwareAccelerator/rle_encoder.sv \
+		verilog/rtl/HardwareAccelerator/tile_analyzer.sv \
+		verilog/rtl/HardwareAccelerator/cost_calculator.sv \
+		verilog/rtl/HardwareAccelerator/format_selector.sv \
+		verilog/rtl/HardwareAccelerator/adaptive_selector.sv \
+		verilog/rtl/HardwareAccelerator/decompressor.sv
+	vvp /tmp/adaptive_compression_demo
+
+.PHONY: demo-python
+demo-python:
+	python3 demo_vectors.py
+
 # Format a new design
 .PHONY: setup_%
 setup_%:

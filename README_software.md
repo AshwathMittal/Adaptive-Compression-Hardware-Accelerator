@@ -80,6 +80,32 @@ This creates per-tile and summary CSV files plus two PNG plots. Matplotlib is
 required for plot generation. All bit counts include the tags emitted by the
 current RTL.
 
+## 5. Record the RTL compression demo
+
+From the repository root:
+
+```bash
+make demo
+```
+
+The demo prints three 4x4 tiles chosen to exercise RAW, Bitmap, and RLE. For
+each tile it shows the input matrix, non-zero/zero counts, all three exact
+candidate costs, the selected format, the final packed bitstream, and the
+decompressed matrix. It ends each case with a lossless round-trip check. This
+output is intended to be captured directly in a terminal recording alongside
+the RTL architecture explanation.
+
+For all 256 generated oracle vectors, run:
+
+```bash
+make demo-python
+```
+
+This uses the same `tiles.mem` and `expected.mem` files as the RTL testbench,
+checks every cost and format decision against the software model, prints every
+matrix and compressed stream, and ends with a format-selection and savings
+summary. Use `python3 demo_vectors.py --limit 3` for a short rehearsal.
+
 The synthetic pattern families intentionally have identical nonzero counts
 but different placement. Their size curves overlap with the current formats
 because encoded cost depends only on the number of nonzero elements, not their
